@@ -1,6 +1,6 @@
 #include "header.h"
 
-string mes;
+message mes;
 SOCKET Listen;
 SOCKET Connect;
 
@@ -60,12 +60,14 @@ void Waiting()
 		if(Connect = accept(Listen, NULL, NULL))
 		{
 			cout << "Client complite connected." << endl;
-			recv(Connect, (char *)&mes, sizeof(string), 0);
-			send(Connect, "SENDING!?", sizeof(string), 0);
+			recv(Connect, (char *)&mes, sizeof(mes), 0);
+			//send(Connect, "SENDING!?", sizeof(string), 0);
+			cout<< mes.ID;
 			break;
 		}
 		Sleep(100);
 
 	}
+
 
 }

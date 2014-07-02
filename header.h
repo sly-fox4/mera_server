@@ -16,9 +16,9 @@ void Waiting();
 
 
 
-//struct message
-//{
-//	string ID;
-//	TDate time;
-//}mes;
+struct message
+{
+	int ID;
+	string time;
+};
 
