@@ -96,6 +96,12 @@
             <BuildOrder>2</BuildOrder>
             <IgnorePath>true</IgnorePath>
         </LibFiles>
+        <CppCompile Include="connection.cpp">
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <None Include="header.h">
+            <BuildOrder>3</BuildOrder>
+        </None>
         <CppCompile Include="server.cpp">
             <BuildOrder>1</BuildOrder>
         </CppCompile>

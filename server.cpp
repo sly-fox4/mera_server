@@ -1,39 +1,20 @@
-#pragma hdrstop
-#pragma argsused
 
-#include <tchar.h>
-#include <stdio.h>
-#include <iostream>
-#include <windows.h>
-#include <winsock2.h>
+#include "header.h"
 
-using namespace std;
+
 
 int main()
 {
-	cout << "Server: " << endl;
 
-    char message[MAX_PATH];
+	StartWinSock();
 
-    WSAData wsa;
-    WORD Version = MAKEWORD(2, 1);
+	CreateSock();
+	Waiting();
 
-    WSAStartup(Version, &wsa);
 
-    if(WSAStartup(Version, &wsa) != 0)
-    {
-		cout << "WSA library startup error." << endl;
-    }
-    else
-	{
-		cout << "WSA library startup complite." << endl;
-	}
-
+	//closesocket(Listen);
+	//closesocket(Connect);
+	WSACleanup();
 	system("PAUSE");
-
-
-
-
-
 	return 0;
 }
