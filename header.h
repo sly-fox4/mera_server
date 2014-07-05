@@ -17,7 +17,7 @@ void StartWinSock();
 void CreateSock();
 void Waiting();
 
-struct flightData
+struct flightData       //Структура одного Полета
 {
 	char idFrom[4];
 	char nameFrom[10];
@@ -25,30 +25,28 @@ struct flightData
 	char nameTo[10];
 	bool typeOfFlight;
 	int date;
-	//flightData* next;
 };
 
-struct AirName
+struct AirName         //структура для работы со списком Аэропортов
 {
 	char id[4];
 	char name[30];
 };
 
-struct message
-{
-	char ID[4];
-};
+//struct message        //НАДО ЛИ?!!!!!!!!!!!!!!!!!!!
+//{
+//	char ID[4];
+//};
 
 
 
 class Airport
 {
 	private:
-		char id[4];
 		char name[30];
-        vector<flightData> flightList;
+        char id[4];
+		vector<flightData> flightList;
 	public:
-
 		Airport(AirName);
 		void getAirport();
 };
@@ -65,12 +63,19 @@ class Server
 		Server();
 
 		void startListening();
-		void showAirlist()
-		{
-			//cout<<airList[0].id;
-			//cout<<airList[0].flightList[0].idFrom;
-			cout<<airList.size();
-		}
+		///
+//		void showAirlist()
+//		{
+//			int i=0;
+//			while (i<airList.size())
+//			{
+//				cout<<airList[i].id;
+//				i++;
+//			}
+//			cout<<airList[0].flightList[0].idFrom;
+//			cout<<airList.size();
+//		}
+		///
 		void getAirList();
 		void sendAirList();
 

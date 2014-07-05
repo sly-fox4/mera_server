@@ -5,12 +5,12 @@ void Server::getAirList()
 {
 	FILE *f;
 	AirName aname;
-	f=fopen("airlist.dat", "rb");
-	while (fread(&aname, sizeof(AirName), 1, f))
+	f=fopen("airlist.dat", "rb");                   //Загружаем файл БД
+	while (fread(&aname, sizeof(AirName), 1, f))    //Считываем записи пока они есть
 	{
-		Airport air(aname);
-		air.getAirport();
-		airList.push_back(air);
+		Airport air(aname);                         //Создаем обьект 1 Аэропорта
+		air.getAirport();                           //Получаем его рейсы
+		airList.push_back(air);                     //записываем его в список
 	}
 }
 //Конструктур записываем часть инфы ИД и ИМЯ
@@ -26,11 +26,11 @@ void Airport::getAirport()
 {
     FILE *f;
 	flightData fl;
-	f=fopen("file.dat", "rb");
-	while(fread(&fl, sizeof(flightData), 1, f))
+	f=fopen("file.dat", "rb");                   //Загружаем файл нашей БД
+	while(fread(&fl, sizeof(flightData), 1, f))  //Пока в нем есть записи читаем
 	{
-		if(strcmp(fl.idFrom,id))
-		{
+		if(strcmp(fl.idFrom,id))                 //Если строки совпали
+		{                                        //записываем в лист полетов
 			flightList.push_back(fl);
 		}
 	}

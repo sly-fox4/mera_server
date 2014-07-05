@@ -41,7 +41,7 @@ Server::Server()
 	//airList = new Airport();
 }
 
-message mes;
+//message mes;
 
 void Server::startListening()
 {
@@ -50,9 +50,9 @@ void Server::startListening()
 		if(Connect = accept(Listen, NULL, NULL))
 		{
 			cout << "Client complite connected." << endl;
-			recv(Connect, (char *)&mes, sizeof(mes), 0);
+			//recv(Connect, (char *)&mes, sizeof(mes), 0);
 			//send(Connect, "SENDING!?", sizeof(string), 0);
-			cout<< mes.ID;
+			//cout<< mes.ID;
 			break;
 		}
 		Sleep(100);
