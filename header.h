@@ -17,25 +17,39 @@ void StartWinSock();
 void CreateSock();
 void Waiting();
 
-struct flight
+struct flightData
 {
-	char idFrom[3];
-	char nameFrom[20];
-	char idTo[3];
-	char nameTo[20];
+	char idFrom[4];
+	char nameFrom[10];
+	char idTo[10];
+	char nameTo[10];
 	bool typeOfFlight;
-	TDateTime date;
-	flight* next;
+	int date;
+	//flightData* next;
 };
+
+struct AirName
+{
+	char id[4];
+	char name[30];
+};
+
+struct message
+{
+	char ID[4];
+};
+
+
 
 class Airport
 {
 	private:
-		char id[3];
-		char name[20];
-		flight firstFlight;
+		char id[4];
+		char name[30];
+		vector<flightData> flightList;
 	public:
-		Airport();
+
+		Airport(AirName);
 		void getAirport();
 };
 
@@ -51,17 +65,18 @@ class Server
 		Server();
 
 		void startListening();
-
+//		void showAirlist()
+//		{
+//			cout<<airList[0].id;
+//			cout<<airList.size();
+//		}
 		void getAirList();
 		void sendAirList();
 
 		void getFlightList();
 		void sendFlightList();
+
+		void closeSocket();
 };
 
 
-struct message
-{
-	int ID;
-	string time;
-};

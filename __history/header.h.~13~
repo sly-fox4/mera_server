@@ -1,0 +1,71 @@
+#pragma hdrstop
+#pragma argsused
+
+#include <tchar.h>
+#include <stdio.h>
+#include <iostream>
+#include <windows.h>
+#include <winsock2.h>
+#include <System.hpp>
+#include <vector>
+
+#define numOfAir 10
+
+using namespace std;
+
+void StartWinSock();
+void CreateSock();
+void Waiting();
+
+struct flightData
+{
+	char idFrom[4];
+	char nameFrom[10];
+	char idTo[10];
+	char nameTo[10];
+	bool typeOfFlight;
+	int date;
+	//flightData* next;
+};
+
+class Airport
+{
+	private:
+		char id[4];
+		char name[30];
+		vector<flightData> flightList;
+	public:
+		Airport();
+		void getAirport();
+};
+
+class Server
+{
+	private:
+		WSAData wsa;
+		SOCKET Listen;
+		SOCKET Connect;
+		SOCKADDR_IN Server;
+	public:
+		vector<Airport> airList;
+		Server();
+
+		void startListening();
+
+		void getAirList();
+		void sendAirList();
+
+		void getFlightList();
+		void sendFlightList();
+};
+
+struct AirName
+{
+	char id[4];
+	char name[30];
+}
+
+struct message
+{
+	char ID[4];
+};

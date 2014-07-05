@@ -1,0 +1,29 @@
+#include "header.h"
+
+void Server::getAirList()
+{
+
+}
+void Airport::Airport(message msg)
+{
+	id=msg.ID;
+}
+
+void Airport::getAirport()
+{
+    FILE *f;
+	flightData fl;
+	f=fopen("file.dat", "rb");
+	while(fread(&fl, sizeof(flightData), 1, f))
+	{
+		if (fl.idFrom==id)
+		{
+			flightList.push_back(fl);
+		}
+	}
+	fclose(f);
+}
+
+
+
+

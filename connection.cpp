@@ -59,3 +59,8 @@ void Server::startListening()
 	}
 }
 
+void Server::closeSocket()
+{
+	closesocket(Listen);
+	closesocket(Connect);
+}
