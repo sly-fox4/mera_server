@@ -46,7 +46,7 @@ class Airport
 	private:
 		char id[4];
 		char name[30];
-		vector<flightData> flightList;
+        vector<flightData> flightList;
 	public:
 
 		Airport(AirName);
@@ -65,11 +65,12 @@ class Server
 		Server();
 
 		void startListening();
-//		void showAirlist()
-//		{
-//			cout<<airList[0].id;
-//			cout<<airList.size();
-//		}
+		void showAirlist()
+		{
+			//cout<<airList[0].id;
+			//cout<<airList[0].flightList[0].idFrom;
+			cout<<airList.size();
+		}
 		void getAirList();
 		void sendAirList();
 

@@ -29,7 +29,7 @@ void Airport::getAirport()
 	f=fopen("file.dat", "rb");
 	while(fread(&fl, sizeof(flightData), 1, f))
 	{
-		if (fl.idFrom==id)
+		if(strcmp(fl.idFrom,id))
 		{
 			flightList.push_back(fl);
 		}
