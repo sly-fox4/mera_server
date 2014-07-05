@@ -1,1 +1,4 @@
+void Server::getAirList()
+{
 
+}

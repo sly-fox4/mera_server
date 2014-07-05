@@ -47,12 +47,16 @@ class Server
 		SOCKET Connect;
 		SOCKADDR_IN Server;
 	public:
-		Server();
-		void startListening();
-		void sendAirList();
-		void sendFlightList();
-		void getFlightList();
 		vector<Airport> airList;
+		Server();
+
+		void startListening();
+
+		void getAirList();
+		void sendAirList();
+
+		void getFlightList();
+		void sendFlightList();
 };
 
 

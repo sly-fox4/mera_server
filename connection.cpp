@@ -26,7 +26,7 @@ Server::Server()
 
 	Server.sin_family = AF_INET;
 	Server.sin_port = htons(1337);
-	Server.sin_addr.s_addr = INADDR_ANY; // !!!
+	Server.sin_addr.s_addr = INADDR_ANY;
 
 	if( bind(Listen, (SOCKADDR*)&Server, sizeof(Server)) == SOCKET_ERROR)
 	{
@@ -38,7 +38,7 @@ Server::Server()
 	}
 	listen(Listen, SOMAXCONN);
 
-	airList = new Airport();
+	//airList = new Airport();
 }
 
 message mes;

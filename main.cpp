@@ -7,12 +7,8 @@ int main()
 
 	Server s1;
 	s1.startListening();
-	//StartWinSock();
-
-	//CreateSock();
-	//Waiting();
-	//closesocket(Listen);
-	//closesocket(Connect);
+	//closesocket(s1.Listen);
+	//closesocket(s1.Connect);
 	WSACleanup();
 	system("PAUSE");
 	return 0;
