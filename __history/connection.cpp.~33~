@@ -1,0 +1,103 @@
+#include "header.h"
+
+Server::Server()
+{
+	WORD Version = MAKEWORD(2, 1);
+	WSAStartup(Version, &wsa);
+    if(WSAStartup(Version, &wsa) != 0)
+	{
+		cout << "WSA library startup error." << endl;
+	}
+	else
+	{
+		cout << "WSA library startup complite." << endl;
+	}
+	Listen = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	Connect = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+	if(Listen == SOCKET_ERROR || Connect == SOCKET_ERROR)
+	{
+		cout << "Socket error. Can't create socket." << endl;
+	}
+	else
+	{
+		cout << "Socket create complite." << endl;
+	}
+
+	Server.sin_family = AF_INET;
+	Server.sin_port = htons(1337);
+	Server.sin_addr.s_addr = INADDR_ANY;
+
+	if( bind(Listen, (SOCKADDR*)&Server, sizeof(Server)) == SOCKET_ERROR)
+	{
+		cout << "Can't bind socket." << endl;
+	}
+	else
+	{
+		cout << "Socket bind complite." << endl;
+	}
+	listen(Listen, SOMAXCONN);
+}
+
+void Server::findAirport(AirName request)
+{
+	cout<< airList.size();
+	for (int i = 0; i < airList.size(); i++)
+	{
+
+		if (strcmp(request.id,airList[i].id))
+		{
+			for (int j = 0; j < airList[i].flightList.size(); j++)
+			{
+				//cout<<airList[i].flightList[j].idFrom<<endl;
+				send(Connect,(char*) &airList[i].flightList[j], sizeof(flightData), 0);
+			}
+		}
+	}
+}
+
+
+void Server::startListening()
+{
+	//system("PAUSE");
+	while(1)
+	{
+		cout<< "Enter 1-st while" <<endl;
+		if(Connect = accept(Listen, NULL, NULL))
+		{
+            cout<< "Enter if" <<endl;
+			AirName request;
+			cout << "Got a client!" << endl;
+			recv(Connect, (char*) &request, sizeof(AirName), 0);
+			cout << "Client want" << request.id << "  " << request.name<< endl;
+			this->findAirport(request);
+			break;
+		}
+	}
+}
+
+void Server::sendAirList()
+{
+	  while(1)
+	   {
+
+			if(Connect = accept(Listen, NULL, NULL))
+			{
+
+				cout << "Client complite connected." << endl;
+				for (int i = 0; i < airNameList.size(); i++)
+				{
+					send(Connect,(char*) &airNameList[i], sizeof(AirName), 0);
+					cout<<"Send " << i <<"-st " << "name" << endl;
+				}
+				break;
+			}
+			Sleep(100);
+	   }
+}
+
+void Server::closeSocket()
+{
+	//closesocket(Listen);
+	closesocket(Connect);
+}

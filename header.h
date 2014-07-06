@@ -17,12 +17,14 @@ void StartWinSock();
 void CreateSock();
 void Waiting();
 
-struct flightData       //Структура одного Полета
+struct flightData          //Структура для 1 полета
 {
 	char idFrom[4];
-	char nameFrom[10];
-	char idTo[10];
-	char nameTo[10];
+	char nameFrom[30];
+	char idTo[4];
+	char nameTo[30];
+	int timeFrom;
+	int timeTo;
 	bool typeOfFlight;
 	int date;
 };

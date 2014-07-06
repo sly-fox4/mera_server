@@ -41,13 +41,15 @@ Server::Server()
 
 void Server::findAirport(AirName request)
 {
+	cout<< airList.size();
 	for (int i = 0; i < airList.size(); i++)
 	{
-		if (strcmp(request.id,airList[i].id))
+
+		if (strcmp(request.id,airList[i].id)==0)
 		{
-			//airList[i].sendFlightList();
 			for (int j = 0; j < airList[i].flightList.size(); j++)
 			{
+				//cout<<airList[i].flightList[j].idFrom<<endl;
 				send(Connect,(char*) &airList[i].flightList[j], sizeof(flightData), 0);
 			}
 		}
@@ -68,7 +70,7 @@ void Server::startListening()
 			cout << "Got a client!" << endl;
 			recv(Connect, (char*) &request, sizeof(AirName), 0);
 			cout << "Client want" << request.id << "  " << request.name<< endl;
-			//this->findAirport(request);
+			this->findAirport(request);
 			break;
 		}
 	}
