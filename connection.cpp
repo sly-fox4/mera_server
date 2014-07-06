@@ -45,18 +45,20 @@ Server::Server()
 
 void Server::startListening()
 {
-	while(true)
-	{
-		if(Connect = accept(Listen, NULL, NULL))
-		{
-			cout << "Client complite connected." << endl;
-			//recv(Connect, (char *)&mes, sizeof(mes), 0);
-			//send(Connect, "SENDING!?", sizeof(string), 0);
-			//cout<< mes.ID;
-			break;
-		}
-		Sleep(100);
-	}
+	  int i=0;
+	  while(1)
+	   {
+			if(Connect = accept(Listen, NULL, NULL))
+			{
+				cout << "Client complite connected." << endl;
+				send(Connect,(char*) &airNameList[0], sizeof(AirName), 0);
+				//cout << "Send "<< i << endl;
+				//i++;
+				//send(Connect,(char*) &airNameList[i], sizeof(AirName), 0);
+				break;
+			}
+		//Sleep(100);
+	   }
 }
 
 void Server::closeSocket()

@@ -9,7 +9,7 @@
 #include <System.hpp>
 #include <vector>
 
-#define numOfAir 10
+
 
 using namespace std;
 
@@ -33,13 +33,6 @@ struct AirName         //структура для работы со списком Аэропортов
 	char name[30];
 };
 
-//struct message        //НАДО ЛИ?!!!!!!!!!!!!!!!!!!!
-//{
-//	char ID[4];
-//};
-
-
-
 class Airport
 {
 	private:
@@ -59,6 +52,7 @@ class Server
 		SOCKET Connect;
 		SOCKADDR_IN Server;
 	public:
+        vector<AirName> airNameList;
 		vector<Airport> airList;
 		Server();
 

@@ -8,6 +8,7 @@ void Server::getAirList()
 	f=fopen("airlist.dat", "rb");                   //Загружаем файл БД
 	while (fread(&aname, sizeof(AirName), 1, f))    //Считываем записи пока они есть
 	{
+        airNameList.push_back(aname);
 		Airport air(aname);                         //Создаем обьект 1 Аэропорта
 		air.getAirport();                           //Получаем его рейсы
 		airList.push_back(air);                     //записываем его в список
