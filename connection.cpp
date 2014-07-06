@@ -45,19 +45,18 @@ Server::Server()
 
 void Server::startListening()
 {
-	  int i=0;
 	  while(1)
 	   {
 			if(Connect = accept(Listen, NULL, NULL))
 			{
 				cout << "Client complite connected." << endl;
-				send(Connect,(char*) &airNameList[0], sizeof(AirName), 0);
-				//cout << "Send "<< i << endl;
-				//i++;
-				//send(Connect,(char*) &airNameList[i], sizeof(AirName), 0);
+				for (int i = 0; i < airNameList.size(); i++)
+				{
+					send(Connect,(char*) &airNameList[i], sizeof(AirName), 0);
+				}
 				break;
 			}
-		//Sleep(100);
+			Sleep(100);
 	   }
 }
 
