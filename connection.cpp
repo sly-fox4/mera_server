@@ -37,13 +37,42 @@ Server::Server()
 		cout << "Socket bind complite." << endl;
 	}
 	listen(Listen, SOMAXCONN);
-
-	//airList = new Airport();
 }
 
-//message mes;
+void Server::findAirport(AirName request)
+{
+	for (int i = 0; i < airList.size(); i++)
+	{
+		if (strcmp(request.id,airList[i].id))
+		{
+			//airList[i].sendFlightList();
+			for (int j = 0; j < airList[i].flightList.size(); j++)
+			{
+				send(Connect,(char*) &airList[i].flightList[j], sizeof(flightData), 0);
+			}
+		}
+	}
+}
+
 
 void Server::startListening()
+{
+	system("PAUSE");
+	while(1)
+	{
+		if(Connect = accept(Listen, NULL, NULL))
+		{
+			AirName request;
+			cout << "Got a client!" << endl;
+			recv(Connect, (char*) &request, sizeof(AirName), 0);
+			cout << "Client want" << request.id << "  " << request.name<< endl;
+			this->findAirport(request);
+			break;
+		}
+	}
+}
+
+void Server::sendAirList()
 {
 	  while(1)
 	   {

@@ -37,11 +37,14 @@ class Airport
 {
 	private:
 		char name[30];
-        char id[4];
-		vector<flightData> flightList;
+
+		//vector<flightData> flightList;
 	public:
+		vector<flightData> flightList;
+		char id[4];
 		Airport(AirName);
 		void getAirport();
+		void sendFlightList();
 };
 
 class Server
@@ -52,30 +55,16 @@ class Server
 		SOCKET Connect;
 		SOCKADDR_IN Server;
 	public:
-        vector<AirName> airNameList;
+		vector<AirName> airNameList;
 		vector<Airport> airList;
 		Server();
 
 		void startListening();
-		///
-//		void showAirlist()
-//		{
-//			int i=0;
-//			while (i<airList.size())
-//			{
-//				cout<<airList[i].id;
-//				i++;
-//			}
-//			cout<<airList[0].flightList[0].idFrom;
-//			cout<<airList.size();
-//		}
-		///
+
 		void getAirList();
 		void sendAirList();
 
-		void getFlightList();
-		void sendFlightList();
-
+		void findAirport(AirName );
 		void closeSocket();
 };
 
