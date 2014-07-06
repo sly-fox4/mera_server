@@ -57,16 +57,18 @@ void Server::findAirport(AirName request)
 
 void Server::startListening()
 {
-	system("PAUSE");
+	//system("PAUSE");
 	while(1)
 	{
+		cout<< "Enter 1-st while" <<endl;
 		if(Connect = accept(Listen, NULL, NULL))
 		{
+            cout<< "Enter if" <<endl;
 			AirName request;
 			cout << "Got a client!" << endl;
 			recv(Connect, (char*) &request, sizeof(AirName), 0);
 			cout << "Client want" << request.id << "  " << request.name<< endl;
-			this->findAirport(request);
+			//this->findAirport(request);
 			break;
 		}
 	}
@@ -76,12 +78,15 @@ void Server::sendAirList()
 {
 	  while(1)
 	   {
+
 			if(Connect = accept(Listen, NULL, NULL))
 			{
+
 				cout << "Client complite connected." << endl;
 				for (int i = 0; i < airNameList.size(); i++)
 				{
 					send(Connect,(char*) &airNameList[i], sizeof(AirName), 0);
+					cout<<"Send " << i <<"-st " << "name" << endl;
 				}
 				break;
 			}
@@ -91,6 +96,6 @@ void Server::sendAirList()
 
 void Server::closeSocket()
 {
-	closesocket(Listen);
+	//closesocket(Listen);
 	closesocket(Connect);
 }
